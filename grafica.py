@@ -29,6 +29,19 @@ plt.grid(True)
 plt.savefig('imagenes/grafica2.png', dpi=300)
 plt.close()
 
+# -------- Gráfica 3 --------
+x3 = [val ** 2 for val in x2]
+y3 = y2
+
+plt.plot(x3, y3, marker='o')
+plt.xticks(range(0, 70, 10))
+plt.yticks(range(10, 70, 10))
+plt.xlabel('D² [cm²]')
+plt.ylabel('m [g]')
+plt.grid(True)
+plt.savefig('imagenes/grafica3.png', dpi=300)
+plt.close()
+
 # -------- Insertar en DOCX --------
 doc = Document('plantilla.docx')
 
@@ -39,5 +52,8 @@ for para in doc.paragraphs:
     if '<<GRAFICA2>>' in para.text:
         para.clear()
         para.add_run().add_picture('imagenes/grafica2.png', width=Inches(4))
+    if '<<GRAFICA3>>' in para.text:
+        para.clear()
+        para.add_run().add_picture('imagenes/grafica3.png', width=Inches(4))
 
-doc.save('informePythonFrancoPrieto.docx')
+doc.save('informe_generado.docx')
