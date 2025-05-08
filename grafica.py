@@ -55,6 +55,21 @@ plt.grid(True)
 plt.savefig('imagenes/grafica4.png', dpi=300)
 plt.close()
 
+# -------- Gráfica 5 --------
+x5 = [0.713, 0.998, 1.501, 1.746, 1.905, 2.222]
+y5 = [1.47, 4.50, 13.75, 21.70, 28.20, 44.75]
+
+plt.plot(x5, y5, marker='o')
+plt.xticks([round(i * 0.1, 1) for i in range(0, 26)])  # 0.0 to 2.5 by 0.1
+plt.yticks(range(10, 60, 10))  # 10 to 50
+plt.xlabel('D [cm]')
+plt.ylabel('m [g]')
+plt.grid(True)
+plt.savefig('imagenes/grafica5.png', dpi=300)
+plt.close()
+
+
+
 # -------- Insertar en DOCX --------
 doc = Document('plantilla.docx')
 
@@ -71,5 +86,8 @@ for para in doc.paragraphs:
     if '<<GRAFICA4>>' in para.text:
         para.clear()
         para.add_run().add_picture('imagenes/grafica4.png', width=Inches(4))
+    if '<<GRAFICA5>>' in para.text:
+        para.clear()
+        para.add_run().add_picture('imagenes/grafica5.png', width=Inches(4))
 
-doc.save('informe_generado.docx')
+doc.save('informePythonFrancoPrieto.docx')
