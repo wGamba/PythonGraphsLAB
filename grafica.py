@@ -42,6 +42,19 @@ plt.grid(True)
 plt.savefig('imagenes/grafica3.png', dpi=300)
 plt.close()
 
+# -------- Gráfica 4 --------
+x4 = np.log10(x2)
+y4 = np.log10(y2)
+
+plt.plot(x4, y4, marker='o')
+plt.xticks(np.arange(0, 1.1, 0.1))
+plt.yticks(np.arange(0, 1.8, 0.1))
+plt.xlabel('x = log10(D [cm])')
+plt.ylabel('y = log10(m [g])')
+plt.grid(True)
+plt.savefig('imagenes/grafica4.png', dpi=300)
+plt.close()
+
 # -------- Insertar en DOCX --------
 doc = Document('plantilla.docx')
 
@@ -55,5 +68,8 @@ for para in doc.paragraphs:
     if '<<GRAFICA3>>' in para.text:
         para.clear()
         para.add_run().add_picture('imagenes/grafica3.png', width=Inches(4))
+    if '<<GRAFICA4>>' in para.text:
+        para.clear()
+        para.add_run().add_picture('imagenes/grafica4.png', width=Inches(4))
 
 doc.save('informe_generado.docx')
