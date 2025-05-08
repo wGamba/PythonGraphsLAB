@@ -68,6 +68,31 @@ plt.grid(True)
 plt.savefig('imagenes/grafica5.png', dpi=300)
 plt.close()
 
+# -------- Gráfica 6 --------
+x6 = [round(val**2, 4) for val in x5]  # Z = D² [cm²]
+y6 = y5  # m [g]
+
+plt.plot(x6, y6, marker='o')
+plt.yticks(range(10, 70, 10))  # 10 a 60
+plt.xticks(range(1, 7))        # 1 a 6
+plt.xlabel('Z [cm²]')
+plt.ylabel('m [g]')
+plt.grid(True)
+plt.savefig('imagenes/grafica6.png', dpi=300)
+plt.close()
+
+# -------- Gráfica 7 --------
+x7 = [round(val**3, 4) for val in x5]  # W = D³ [cm³]
+y7 = y5  # m [g]
+
+plt.plot(x7, y7, marker='o')
+plt.xticks(range(1, 13))  # 1 a 12
+plt.yticks(range(10, 80, 10))  # 10 a 70
+plt.xlabel('W [cm³]')
+plt.ylabel('m [g]')
+plt.grid(True)
+plt.savefig('imagenes/grafica7.png', dpi=300)
+plt.close()
 
 
 # -------- Insertar en DOCX --------
@@ -89,5 +114,11 @@ for para in doc.paragraphs:
     if '<<GRAFICA5>>' in para.text:
         para.clear()
         para.add_run().add_picture('imagenes/grafica5.png', width=Inches(4))
+    if '<<GRAFICA6>>' in para.text:     
+        para.clear()
+        para.add_run().add_picture('imagenes/grafica6.png', width=Inches(4))
+    if '<<GRAFICA7>>' in para.text:
+        para.clear()
+        para.add_run().add_picture('imagenes/grafica7.png', width=Inches(4))
 
 doc.save('informePythonFrancoPrieto.docx')
