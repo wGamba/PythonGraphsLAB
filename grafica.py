@@ -94,6 +94,19 @@ plt.grid(True)
 plt.savefig('imagenes/grafica7.png', dpi=300)
 plt.close()
 
+# -------- Gráfica 8 --------
+x8 = np.log10(x5)  # log10(D [cm])
+y8 = np.log10(y5)  # log10(m [g])
+
+plt.plot(x8, y8, marker='o')
+plt.xlabel('x = log10(D [cm])')
+plt.ylabel('y = log10(m [g])')
+plt.xticks(np.arange(-1, 2.5, 0.5))
+plt.yticks(np.arange(-1, 3.5, 0.5))
+plt.grid(True)
+plt.savefig('imagenes/grafica8.png', dpi=300)
+plt.close()
+
 
 # -------- Insertar en DOCX --------
 doc = Document('plantilla.docx')
@@ -120,5 +133,8 @@ for para in doc.paragraphs:
     if '<<GRAFICA7>>' in para.text:
         para.clear()
         para.add_run().add_picture('imagenes/grafica7.png', width=Inches(4))
+    if '<<GRAFICA8>>' in para.text:
+        para.clear()
+        para.add_run().add_picture('imagenes/grafica8.png', width=Inches(4))
 
 doc.save('informePythonFrancoPrieto.docx')
