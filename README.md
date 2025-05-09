@@ -41,7 +41,7 @@ Este proyecto utiliza las siguientes bibliotecas de Python:
 
 1. **Recopilar los datos**: Asegúrate de que los datos estén correctamente organizados en la planilla.
 2. **Ejecutar el script**: El script generará las gráficas y las insertará en el archivo de Word.
-3. **Verificar el resultado**: El archivo `informe_generado.docx` se guardará con las gráficas insertadas.
+3. **Verificar el resultado**: El archivo `iinformePythonFrancoP****.docx` se guardará con las gráficas insertadas.
 
 ## Instalación
 
